@@ -9,6 +9,27 @@ function ShowUser() {
       .then((data) => setUsers(data));
   }, []);
 
+  const handleDelete = (user) => {
+    console.log(user._id);
+
+    // Delete with body
+    // fetch("http://localhost:2701/delete",{
+    //   method:"DELETE",
+    //   headers:{
+    //     "content-type":"application/json"
+    //   },
+    //   body:JSON.stringify({id:user._id})
+    // })
+
+    // Delete with params
+    fetch(`http://localhost:2701/delete/${user._id}`, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    })
+    
+    
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-6">
@@ -21,8 +42,12 @@ function ShowUser() {
             <thead className="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
               <tr>
                 <th className="px-6 py-3 text-left text-sm font-semibold">#</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">Name</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">Email</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold">
+                  Name
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold">
+                  Email
+                </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold">
                   Phone
                 </th>
@@ -34,24 +59,23 @@ function ShowUser() {
 
             <tbody className="divide-y divide-gray-200">
               {users.map((user, index) => (
-                <tr
-                  key={user._id}
-                  className="hover:bg-blue-50 transition"
-                >
+                <tr key={user._id} className="hover:bg-blue-50 transition">
                   <td className="px-6 py-4 font-medium text-gray-700">
                     {index + 1}
                   </td>
                   <td className="px-6 py-4 text-gray-800 font-semibold">
                     {user.name}
                   </td>
-                  <td className="px-6 py-4 text-blue-600">
-                    {user.email}
-                  </td>
-                  <td className="px-6 py-4 text-gray-700">
-                    {user.number}
-                  </td>
-                  <td className="px-6 py-4 text-gray-600">
-                    {user.address}
+                  <td className="px-6 py-4 text-blue-600">{user.email}</td>
+                  <td className="px-6 py-4 text-gray-700">{user.number}</td>
+                  <td className="px-6 py-4 text-gray-600">{user.address}</td>
+                  <td
+                    onClick={() => {
+                      handleDelete(user);
+                    }}
+                    className="mx-4 cursor-pointer  hover:underline text-gray-600"
+                  >
+                    Delete
                   </td>
                 </tr>
               ))}

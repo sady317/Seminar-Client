@@ -1,5 +1,6 @@
-import toast from "daisyui/components/toast";
-import React from "react";
+
+import toast from "react-hot-toast";
+import { Link } from "react-router";
 
 function App() {
   const handleAllData=(e)=>{
@@ -18,6 +19,11 @@ function App() {
         "content-type":"application/json"
       },
       body:JSON.stringify(data)
+    })
+    .then(res=>res.json)
+    .then(()=>{
+      toast.success("User succesfully registrate")
+    
     })
     
   }
@@ -40,6 +46,7 @@ function App() {
               Full Name
             </label>
             <input
+            required
             name="name"
               type="text"
               placeholder="Enter your name"
@@ -53,6 +60,7 @@ function App() {
               Email Address
             </label>
             <input
+            required
             name="email"
               type="email"
               placeholder="Enter your email"
@@ -66,6 +74,7 @@ function App() {
               Phone Number
             </label>
             <input
+            required
             name="number"
               type="tel"
               placeholder="Enter your number"
@@ -79,6 +88,7 @@ function App() {
               Address
             </label>
             <textarea
+            required
             name="address"
               rows="3"
               placeholder="Enter your address"
@@ -94,6 +104,7 @@ function App() {
             Register Now
           </button>
         </form>
+        <Link to={"/users"}><div className=" bg-red-500 my-2 text-center text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">All Registration User</div></Link>
       </div>
     </div>
   );
