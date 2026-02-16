@@ -13,7 +13,7 @@ function UpdateName() {
     console.log(name)
 
     fetch(`http://localhost:2703/seminar/${data._id}`,{
-        method:"PUT",
+        method:"PATCH",
         headers:{
             "content-type":"application/json"
         },
