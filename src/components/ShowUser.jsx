@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { BiLeftArrowAlt } from "react-icons/bi";
 import { Link } from "react-router";
+import { toast } from "sonner";
 
 function ShowUser() {
   const [users, setUsers] = useState([]);
@@ -27,6 +29,12 @@ function ShowUser() {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     })
+    .then((res)=>{
+      if(res.status===200){
+        toast.success("Deleted Succesfully")
+        window.location.reload()
+      }
+    })
     
     
   };
@@ -34,6 +42,7 @@ function ShowUser() {
   return (
   <div className="min-h-screen bg-gray-100 p-6">
   <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+    <Link to={"/"} className="flex items-center text-2xl"><BiLeftArrowAlt/></Link>
     <h2 className="text-3xl font-bold text-gray-800 mb-8">
       Seminar Registrations
     </h2>

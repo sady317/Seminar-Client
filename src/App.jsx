@@ -1,8 +1,10 @@
-
-import toast from "react-hot-toast";
-import { Link } from "react-router";
+import { Link,  useNavigate } from "react-router";
+import { toast } from "sonner";
 
 function App() {
+
+  const navigate=useNavigate()
+  
   const handleAllData=(e)=>{
     e.preventDefault();
     const form=e.target
@@ -13,17 +15,18 @@ function App() {
     console.log(name,email,number,address)
     
     const data={name,email,number,address}
-    fetch("http://localhost:2701/seminar" ,{
+    fetch("http://localhost:2703/seminar" ,{
       method:"POST",
       headers:{
         "content-type":"application/json"
       },
       body:JSON.stringify(data)
-    })
-    .then(res=>res.json)
-    .then(()=>{
-      toast.success("User succesfully registrate")
-    
+    }).then((res)=>{
+      console.log(res)
+      if(res.status===200){
+        toast.success("Registration Succesfull")
+        navigate("/users")
+      }
     })
     
   }

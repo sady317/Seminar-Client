@@ -1,11 +1,10 @@
-import React from 'react'
-import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router'
+import { useLoaderData, useNavigate } from 'react-router'
+import { toast } from 'sonner';
 
 function UpdateName() {
     const data =useLoaderData();
     console.log(data)
-    
+    const navigate=useNavigate()
     const handleUpdateName=(e)=>{
           e.preventDefault();
     const form=e.target
@@ -20,7 +19,8 @@ function UpdateName() {
         body:JSON.stringify({name})
     })
     .then(()=>{
-        toast.success("succesfully changed the name")
+       toast.success("Succesfully updated name")
+       navigate("/users")
     })
     }
   return (
