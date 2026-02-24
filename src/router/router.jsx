@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   {
     path: "/user/:id",
     element: <UpdateName/>,
-    loader:({params})=>fetch(`http://localhost:2703/seminar/${params.id}`)
+    loader:({params})=>fetch(`https://seminar-server-inky.vercel.app/seminar/${params.id}`)
   },
 ]);
 

@@ -7,7 +7,7 @@ function ShowUser() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:2703/seminar")
+    fetch("https://seminar-server-inky.vercel.app/seminar")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -25,7 +25,7 @@ function ShowUser() {
     // })
 
     // Delete with params
-    fetch(`http://localhost:2703/delete/${user._id}`, {
+    fetch(`https://seminar-server-inky.vercel.app/delete/${user._id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     }).then((res) => {
