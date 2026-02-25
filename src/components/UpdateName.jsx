@@ -11,7 +11,7 @@ function UpdateName() {
     const name=form.name.value
     console.log(name)
 
-    fetch(`https://seminar-server-inky.vercel.app/seminar/${data._id}`,{
+    fetch(`https://seminar-server-omega.vercel.app/seminar/${data._id}`,{
         method:"PATCH",
         headers:{
             "content-type":"application/json"
