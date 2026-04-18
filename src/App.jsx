@@ -15,7 +15,7 @@ function App() {
     console.log(name,email,number,address)
     
     const data={name,email,number,address}
-    fetch("http://localhost:5000/seminar" ,{
+    fetch("https://seminar-server.onrender.com/seminar" ,{
       method:"POST",
       headers:{
         "content-type":"application/json"

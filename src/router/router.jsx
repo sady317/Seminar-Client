@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   {
     path: "/user/:id",
     element: <UpdateName/>,
-    loader:({params})=>fetch(`http://localhost:5000/seminar/${params.id}`)
+    loader:({params})=>fetch(`https://seminar-server.onrender.com/${params.id}`)
   },
 ]);
 
