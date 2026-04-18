@@ -15,7 +15,7 @@ function App() {
     console.log(name,email,number,address)
     
     const data={name,email,number,address}
-    fetch("https://seminar-server-omega.vercel.app/seminar" ,{
+    fetch("http://localhost:5000/seminar" ,{
       method:"POST",
       headers:{
         "content-type":"application/json"

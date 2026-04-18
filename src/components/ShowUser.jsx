@@ -7,7 +7,7 @@ function ShowUser() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://seminar-server-omega.vercel.app/seminar")
+    fetch(`http://localhost:5000/seminar`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -25,7 +25,7 @@ function ShowUser() {
     // })
 
     // Delete with params
-    fetch(`https://seminar-server-omega.vercel.app/delete/${user._id}`, {
+    fetch(`http://localhost:5000/delete/${user._id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     }).then((res) => {

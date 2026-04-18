@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   {
     path: "/user/:id",
     element: <UpdateName/>,
-    loader:({params})=>fetch(`https://seminar-server-omega.vercel.app/seminar/${params.id}`)
+    loader:({params})=>fetch(`http://localhost:5000/seminar/${params.id}`)
   },
 ]);
 
